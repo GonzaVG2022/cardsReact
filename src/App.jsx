@@ -1,27 +1,46 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import users from './json/users.json'
 import Users from './assets/components/structure'
-// import ColorsRandom from './assets/components/colors'
+
 
 import './App.css'
 
-function App() {
+function App(buttonChan) {
 
-//  console.log(users)
+
 
   
 
-// !fin
-function randomIndex1(){
-  let index = Math.floor(Math.random() * users.length)
+
+function randomIndex1(length){
+  let index = Math.floor(Math.random() * length)
   return index
 }
 
   
 
-const [index, setIndex]= useState(randomIndex1())
+const [index, setIndex]= useState(randomIndex1(users.length))
 
-let positionUser=randomIndex1();
+
+function buttonChan(){
+  return(
+    setIndex(randomIndex1(users.length))
+    
+)
+  
+}
+const colors = ["#FDB137", "#785964", "#6D6875", "#B5838D",
+                  "#E5989B", "#7E9680", "#C73866", "#FFB4A2", "#79616F", "#EAB595" ];
+  const randomColors = randomIndex1(colors.length)
+
+ useEffect(()=>{ 
+  let color= colors[randomIndex1(colors.length)]
+  document.body.style=  `background-color: ${color};color: ${color} `  
+  
+  }, [index])
+ 
+
+ 
 
 
   return (
@@ -30,23 +49,20 @@ let positionUser=randomIndex1();
       <div>
         {
         <Users
-       names= {`${users[positionUser].name.title} ${users[positionUser].name.first} ${users[positionUser].name.last} `}
-       pictures= {`${users[positionUser].picture.medium}` }
-       emails= {`${users[positionUser].email}`}
-       numbers= {`${users[positionUser].phone}`}
-       loc= {`${users[positionUser].location.country} ${users[positionUser].location.state} ${users[positionUser].location.city}` }
-      // color={colors[icolo]}
+       names= {` ${users[index].name.title} ${users[index].name.first} ${users[index].name.last} `}
+       pictures= {`${users[index].picture.large}` }
+       emails= {` ${users[index].email}`}
+       numbers= {` ${users[index].phone}`}
+       loc= {` ${users[index].location.country} ${users[index].location.state} ${users[index].location.city}` }
+       
         />
         
         }
-        {
-         
-         
-        }
+        
       </div>
         <div className='dad-button'>
+        <button className="buu" onClick={()=>setIndex(randomIndex1(users.length))}><i className='bx bxs-chevrons-right'></i></button>
           
-          <button onClick={()=>setIndex(randomIndex1())}><button onClick={()=>setIcolo(changeIndex)}><i className='bx bxs-cool'></i></button></button>
         </div>   
   </div>
 
