@@ -1,7 +1,5 @@
-import { useState } from "react"
 
-
-const Users = ({pictures,names,emails,numbers,loc,color})=> {
+const Users = ({pictures,names,emails,numbers,loc})=> {
     
   return(
         <div className="container">

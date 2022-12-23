@@ -8,14 +8,15 @@ import './App.css'
 function App() {
 
   function randomIndex1(length){
-  let index = Math.floor(Math.random() * length)
-  return index
+  let index1 = Math.floor(Math.random() * length)
+  return index1
 } 
 
 const [index, setIndex]= useState(randomIndex1(users.length))
 
 const colors = ["#FDB137", "#785964", "#6D6875", "#B5838D",
-                  "#E5989B", "#7E9680", "#C73866", "#FFB4A2", "#79616F", "#EAB595" ];
+                "#E5989B", "#7E9680", "#C73866", "#FFB4A2", 
+                "#79616F", "#EAB595" ];
   const randomColors = randomIndex1(colors.length)
 
  useEffect(()=>{ 
